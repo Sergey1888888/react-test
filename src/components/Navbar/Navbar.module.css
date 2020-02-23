@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+.nav {
+    grid-area: n;
+    background-color: rgb(70, 90, 81);
+  }
+
+.nav .flex {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-around;
+}
+
+/* .item:nth-child(1) {
+    margin-top: 20px;
+} */
+
+.item {
+    display: flex;
+    flex-basis: 190px;
+    align-items: center;
+}
+
+.item a.active {
+    background-color: indigo;
+}
+
+.item a {
+    padding-top: 1.6em;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+}

@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogs_items {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    justify-content: space-around;
+}
+
+.dialog {
+    display: flex;
+    flex-basis: 166px;
+}
+
+.dialog a.active {
+    background-color: gold;
+}
+
+.dialog a {
+    padding-top: 1em;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+}
+
+.messages {
+    padding: 20px;
+}
+
+.message {
+
+}
