@@ -34,8 +34,36 @@
 
 .messages {
     padding: 20px;
+    position: relative;
 }
 
 .message {
+
+}
+
+.textMessage {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.textMessageFlex {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+textarea {
+    border: none;
+    width: 80%;
+    resize: none;
+    outline: none;
+}
+
+.btnSendMessage {
+    margin-left: 15px;
+    height: 35px;
+    width: 100px;
 
 }

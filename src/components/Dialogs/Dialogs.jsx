@@ -1,26 +1,44 @@
-import React from 'react';
-import s from './Dialogs.module.css';
-import DialogItem from './DialogItem/DialogItem';
-import Message from './Message/Message';
+import React from "react";
+import s from "./Dialogs.module.css";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
-const Dialogs = (props) => {
+const Dialogs = props => {
+    let dialogElements = props.dialogsPage.dialogs.map(d => (
+        <DialogItem name={d.name} id={d.id} />
+    ));
 
-    let dialogElements = props.state.dialogs
-                    .map(d => <DialogItem name={d.name} id={d.id} /> );
+    let messageElements = props.dialogsPage.messages.map(m => (
+        <Message message={m.message} />
+    ));
 
-    let messageElements = props.state.messages
-                    .map(m => <Message message={m.message} /> );
+    let newMessageElement = React.createRef();
 
+    let newMessageText = () => {
+        let text = newMessageElement.current.value;
+        props.updateNewMessageText(text);
+    }
+
+    let addMessage = () => {
+        props.addMessage();
+    }
+console.log(props.dialogsPage.newTextMessage)
     return (
         <div className={s.dialogs}>
-            <div className={s.dialogs_items}>
-                {dialogElements}
-            </div>
+            <div className={s.dialogs_items}>{dialogElements}</div>
             <div className={s.messages}>
                 {messageElements}
+                <div className={s.textMessage}>
+                    <div className={s.textMessageFlex}>
+                        <textarea ref={newMessageElement} onChange={newMessageText} value={props.dialogsPage.newTextMessage} />
+                        <button onClick={addMessage} className={s.btnSendMessage}>
+                            Send Message
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Dialogs;
