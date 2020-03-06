@@ -22,7 +22,7 @@ const Dialogs = props => {
     let addMessage = () => {
         props.addMessage();
     }
-console.log(props.dialogsPage.newTextMessage)
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogs_items}>{dialogElements}</div>
