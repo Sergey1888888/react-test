@@ -4,8 +4,8 @@
 
 .nav {
     grid-area: n;
-    background-color: rgb(70, 90, 81);
-  }
+    background-color: rgb(8, 88, 120);
+}
 
 .nav .flex {
     display: flex;
@@ -25,13 +25,16 @@
 }
 
 .item a.active {
-    background-color: indigo;
+    background-color: rgb(15, 26, 235);
 }
 
 .item a {
-    padding-top: 1.6em;
+    padding-top: 1.3em;
     text-align: center;
     color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 3px;
     text-decoration: none;
     height: 100%;
     width: 100%;

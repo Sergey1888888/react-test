@@ -1,12 +1,16 @@
+body {
+    background-color: rgb(15, 99, 235);
+}
+
 .app-wrapper {
-  display: grid;
-  margin: 0 auto;
-  width: 1200px;
-  grid-template-areas: "h h" "n c";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
-  /* расстояние между фракциями */
+    display: grid;
+    margin: 0 auto;
+    width: 1200px;
+    grid-template-areas: "h h" "n c";
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+    /* расстояние между фракциями */
 }
 
 .app-wrapper__content {
