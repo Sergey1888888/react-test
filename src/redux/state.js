@@ -44,8 +44,9 @@ let store = {
 
     dispatch(action) {
         if (action.type === ADD_POST) {
+            let newId = this._state.profilePage.posts.length + 1;
             let newPost = {
-                id: 3,
+                id: newId,
                 message: this._state.profilePage.newPostText,
                 likesCount: 0
             };
