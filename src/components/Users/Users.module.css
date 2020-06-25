@@ -31,6 +31,8 @@
     outline: none;
     cursor: pointer;
     text-align: center;
+    color: white;
+    background-color: black;
 }
 
 .flex_avatarbtn {
