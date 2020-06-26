@@ -25,11 +25,11 @@
 }
 
 .item a.active {
-    background-color: rgb(185, 252, 0);
+    background-color: rgb(41, 148, 158);
 }
 
 .item a:hover {
-    background-color: rgb(185, 252, 0);
+    background-color: rgb(41, 148, 158);
 }
 
 .item a {

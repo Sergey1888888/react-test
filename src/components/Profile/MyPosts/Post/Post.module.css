@@ -5,14 +5,17 @@
 .item {
   color: black;
   display: flex;
+  max-width: 960px;
 }
 
 .item img {
   width: 60px;
+  height: 60px;
   margin: 10px 20px 10px 20px;
   border-radius: 50%;
 }
 
 .message {
   align-self: center;
+  overflow-wrap: break-word;
 }

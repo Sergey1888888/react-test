@@ -21,11 +21,11 @@
 }
 
 .dialog a.active {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(41, 148, 158);
 }
 
 .dialog a:hover {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(41, 148, 158);
 }
 
 .dialog a {
