@@ -1,14 +1,14 @@
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 
 let initialState = {
-    users: [
-        // {id: 1, photoUrl: 'https://i.redd.it/tyhrngisvqv31.png', followed: false, fullName: 'Sergey', status: 'Я бог', location: {city: 'Moscow', country: 'Russia'}},
-        // {id: 2, photoUrl: 'https://i.ytimg.com/vi/gRm57CMI28Y/hqdefault_live.jpg', followed: true, fullName: 'Dmitry', status: 'Я бог', location: {city: 'Volgograd', country: 'Russia'}},
-        // {id: 3, photoUrl: 'https://images.prismic.io/rivalryglhf/67c465de-fbc1-4123-b25e-cc54dbaa2092_kekwait.png?auto=compress,format&rect=0,32,128,64&w=720&h=360', followed: false, fullName: 'Vitya', status: 'Я бог', location: {city: 'Harkiv', country: 'Ukraine'}},
-        // {id: 4, photoUrl: 'https://i.redd.it/qm3ksi2yajq41.png', followed: false, fullName: 'Maks', status: 'Я бог', location: {city: 'Minsk', country: 'Belarus'}}
-    ]
+    users: [],
+    pageSize: 5,
+    totalCount: 0,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -34,8 +34,14 @@ const usersReducer = (state = initialState, action) => {
                 } )
             }
         case SET_USERS: {
-            return { ...state, users: [ ...state.users, ...action.users ] }
+            return { ...state, users: [ ...action.users ] }
             }
+        case SET_CURRENT_PAGE: {
+            return { ...state, currentPage: action.currentPage }
+            }
+        case SET_TOTAL_USERS_COUNT: {
+            return { ...state, totalCount: action.totalCount }
+        }
         default:
             return state;
     }
@@ -44,5 +50,7 @@ const usersReducer = (state = initialState, action) => {
 export const followAC = (userId) => ({ type: FOLLOW, userId })
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
+export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount })
 
 export default usersReducer;
