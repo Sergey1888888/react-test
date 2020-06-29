@@ -13,8 +13,14 @@ class Users extends React.Component {
         });
     }
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = (pageNumber, pagesCount) => {
         this.props.setCurrentPage(pageNumber);
+        if (pageNumber === this.props.maxPage && (this.props.maxPage != pagesCount)) {
+            this.props.setMinMaxPages(this.props.minPage+1, this.props.maxPage+1);
+        }
+        else if (pageNumber === this.props.minPage && (this.props.minPage != 1)) {
+            this.props.setMinMaxPages(this.props.minPage-1, this.props.maxPage-1);
+        }
         axios
         .get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
         .then((response) => {
@@ -23,9 +29,10 @@ class Users extends React.Component {
     }
 
     render() {
+        debugger;
         let pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize);
         let pages = [];
-        for (let i = 1; i <= pagesCount; i++) {
+        for (let i = this.props.minPage; i <= this.props.maxPage; i++) {
             pages.push(i);
         }
 
@@ -33,7 +40,7 @@ class Users extends React.Component {
                 <div className={s.flex}>
                     <div className={s.flex_pages}>
                         {pages.map( p => {
-                            return <span onClick={() => {this.onPageChanged(p)}} className={this.props.currentPage === p ? s.activePage : s.pages}>{p}</span>
+                            return <span onClick={() => {this.onPageChanged(p, pagesCount)}} className={this.props.currentPage === p ? s.activePage : s.pages}>{p}</span>
                         })}
                     </div>
                 {this.props.users.map((u) => (
