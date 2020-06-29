@@ -1,9 +1,12 @@
+import { act } from "react-dom/test-utils";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_MIN_MAX_PAGES = "SET_MIN_MAX_PAGES";
+const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initialState = {
     users: [],
@@ -11,7 +14,8 @@ let initialState = {
     totalCount: 0,
     currentPage: 1,
     minPage: 1,
-    maxPage: 5
+    maxPage: 5,
+    isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -46,8 +50,10 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, totalCount: action.totalCount }
         }
         case SET_MIN_MAX_PAGES: {
-            debugger
-            return { ...state, minPage: action.minPage, maxPage: action.maxPage}
+            return { ...state, minPage: action.minPage, maxPage: action.maxPage }
+        }
+        case TOGGLE_IS_FETCHING: {
+            return { ...state, isFetching: action.isFetching }
         }
         default:
             return state;
@@ -60,5 +66,6 @@ export const setUsersAC = (users) => ({ type: SET_USERS, users })
 export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage })
 export const setTotalUsersCountAC = (totalCount) => ({ type: SET_TOTAL_USERS_COUNT, totalCount })
 export const setMinMaxPagesAC = (min, max) => ({ type: SET_MIN_MAX_PAGES, minPage: min, maxPage: max })
+export const setIsFetchingAC = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 
 export default usersReducer;
