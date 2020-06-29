@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Users.module.css";
-import defaultUserPhoto from "./../../assets/images/user.png";
+import defaultUserPhoto from "./../../assets/images/user.gif";
 
 let Users = (props) => {
     let pagesCount = Math.ceil(props.totalCount / props.pageSize);
@@ -45,7 +45,7 @@ let Users = (props) => {
                         <div>
                             {u.followed ? (
                                 <button
-                                    className={s.btn}
+                                    className="btn"
                                     onClick={() => {
                                         props.unfollow(u.id);
                                     }}
@@ -54,7 +54,7 @@ let Users = (props) => {
                                 </button>
                             ) : (
                                 <button
-                                    className={s.btn}
+                                    className="btn"
                                     onClick={() => {
                                         props.follow(u.id);
                                     }}

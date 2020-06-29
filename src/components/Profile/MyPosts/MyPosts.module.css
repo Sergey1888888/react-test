@@ -1,3 +1,8 @@
 .posts_block {
     padding: 20px;
 }
+
+.flex_message_btn {
+    display: flex;
+    justify-content: space-between;
+}

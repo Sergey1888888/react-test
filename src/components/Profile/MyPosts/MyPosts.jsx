@@ -22,14 +22,12 @@ const MyPosts = props => {
         <div className={s.posts_block}>
             <h3>My posts</h3>
             <div>
-                <div>
+                <div className={s.flex_message_btn}>
                     <textarea
                         onChange={onPostChange}
                         value={props.profilePage.newPostText}
                     />
-                </div>
-                <div>
-                    <button onClick={onAddPost}>Add post</button>
+                    <button onClick={onAddPost} className="btn">Add post</button>
                 </div>
             </div>
             <div className={s.posts}>{postsElements}</div>

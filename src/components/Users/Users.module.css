@@ -23,18 +23,6 @@
     padding-top: 20px;
 }
 
-.btn {
-    height: 35px;
-    width: 100px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-    text-align: center;
-    color: white;
-    background-color: black;
-}
-
 .flex_avatarbtn {
     display: flex;
     flex-direction: column;

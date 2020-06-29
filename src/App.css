@@ -18,6 +18,25 @@ body {
     background-color: rgb(218, 218, 218);
 }
 
+.btn {
+  height: 35px;
+  width: 100px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  background-color: black;
+  font-weight: bold;
+}
+
+.btn:hover {
+  color: black;
+  background-color: rgb(41, 148, 158);
+  font-weight: bold;
+}
+
 .lds-circle {
     display: inline-block;
     transform: translateZ(1px);
