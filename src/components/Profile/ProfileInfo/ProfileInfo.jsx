@@ -1,15 +1,22 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
+import Preloader from '../../common/Preloader/Preloader';
 
-const ProfileInfo = () => {
-    return <div>
-      <div>
-        <img src="https://images.unsplash.com/photo-1499084732479-de2c02d45fcc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></img>
-      </div>
-      <div className={s.description_block}>
-        ava + desc
-      </div>
+const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />
+  }
+  return <div>
+    <div>
+      <img src={props.profile.photos.large}></img>
     </div>
+    <div className={s.description_block}>
+      <div>Имя: {props.profile.fullName}</div>
+      <div>Статус: {props.profile.aboutMe}</div>
+      <div>Контакты: {Object.values(props.profile.contacts).map(value => (<div>{value}</div>))}</div>
+      <div>Статус: {props.profile.aboutMe}</div>
+    </div>
+  </div>
 }
 
 export default ProfileInfo;
