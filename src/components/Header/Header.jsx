@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import Preloader from './../common/Preloader/Preloader'
 
 const Header = (props) => {
-    debugger
     return <header className={s.header}>
         <img src="https://s1.logaster.com/static/v3/img/products/logo.png"></img>
         <div className={s.login}>
