@@ -1,33 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setMinMaxPages, setIsFetching, setIsFollowingProgress } from '../../redux/users-reducer';
+import { follow, unfollow, setCurrentPage, setMinMaxPages, setIsFollowingProgress, getUsers } from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(true);
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then((data) => {
-            this.props.setIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsersCount(data.totalCount)
-        });
+        this.props.getUsers(this.props.currentPage, this.props.pageSize);
     }
 
     onPageChanged = (pageNumber, pagesCount) => {
-        this.props.setIsFetching(true);
-        this.props.setCurrentPage(pageNumber);
-        if (pageNumber === this.props.maxPage && (this.props.maxPage != pagesCount)) {
-            this.props.setMinMaxPages(this.props.minPage+1, this.props.maxPage+1);
-        }
-        else if (pageNumber === this.props.minPage && (this.props.minPage != 1)) {
-            this.props.setMinMaxPages(this.props.minPage-1, this.props.maxPage-1);
-        }
-        usersAPI.getUsers(pageNumber, this.props.pageSize).then((data) => {
-            this.props.setIsFetching(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.getUsers(pageNumber, this.props.pageSize, this.props.minPage, this.props.maxPage, pagesCount);
     }
 
     render() {
@@ -42,8 +25,7 @@ class UsersContainer extends React.Component {
                         onPageChanged={this.onPageChanged}
                         follow={this.props.follow}
                         unfollow={this.props.unfollow}
-                        followingInProgress={this.props.followingInProgress}
-                        setIsFollowingProgress={this.props.setIsFollowingProgress} />
+                        followingInProgress={this.props.followingInProgress} />
                 </>
     }
 }
@@ -87,4 +69,5 @@ let mapStateToProps = (state) => {
 //     }
 // }
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setMinMaxPages, setIsFetching, setIsFollowingProgress})(UsersContainer);
+export default connect(mapStateToProps,
+    {follow, unfollow, setCurrentPage, setMinMaxPages, setIsFollowingProgress, getUsers})(UsersContainer);

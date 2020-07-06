@@ -17,5 +17,11 @@ export const usersAPI = {
     },
     followUser(userId) {
         return instance.post(`follow/${userId}`).then(response => response.data);
+    },
+    getLogin() {
+        return instance.get('https://social-network.samuraijs.com/api/1.0/auth/me').then(response => response.data);
+    },
+    getProfile(userId) {
+        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : 2}`);
     }
 }
