@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
+import defaultUserPhoto from "./../../../assets/images/user.gif";
 import Preloader from '../../common/Preloader/Preloader';
 
 const ProfileInfo = (props) => {
@@ -8,7 +9,7 @@ const ProfileInfo = (props) => {
   }
   return <div>
     <div>
-      <img src={props.profile.photos.large}></img>
+      <img src={props.profile.photos.large ? props.profile.photos.large : defaultUserPhoto}></img>
     </div>
     <div className={s.description_block}>
       <div>Имя: {props.profile.fullName}</div>

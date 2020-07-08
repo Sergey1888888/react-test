@@ -18,10 +18,13 @@ export const usersAPI = {
     followUser(userId) {
         return instance.post(`follow/${userId}`).then(response => response.data);
     },
-    getLogin() {
-        return instance.get('https://social-network.samuraijs.com/api/1.0/auth/me').then(response => response.data);
-    },
     getProfile(userId) {
-        return instance.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId ? userId : 2}`);
+        return instance.get(`profile/${userId ? userId : 2}`);
+    }
+}
+
+export const authAPI = {
+    getLogin() {
+        return instance.get('auth/me').then(response => response.data);
     }
 }

@@ -21,4 +21,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {setAuthUserData, setIsFetching, getLogin})(HeaderContainer);
+export default connect(mapStateToProps, { getLogin })(HeaderContainer);
