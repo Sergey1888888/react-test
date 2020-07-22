@@ -40,4 +40,12 @@ export const getLogin = () => {
     }
 }
 
+export const Login = (email, password, rememberMe) => (dispatch) => {
+    authAPI.Login(email, password, rememberMe).then(response => {
+        if (response.resultCode === 0) {
+            dispatch(getLogin());
+        }
+    })
+}
+
 export default authReducer;

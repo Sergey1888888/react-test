@@ -29,7 +29,7 @@ const ProfileInfo = (props) => {
                         <div>{value}</div>
                     ))}
                 </div>
-                <div>Статус: {props.profile.aboutMe}</div>
+                <div>Обо мне: {props.profile.aboutMe}</div>
             </div>
         </div>
     );
