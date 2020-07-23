@@ -42,12 +42,10 @@ export const addPost = (newText) => ({ type: ADD_POST, newText });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setStatus = (status) => ({ type: SET_STATUS, status });
 
-export const getProfile = (userId) => {
-    return (dispatch) => {
-        profileAPI.getProfile(userId).then((response) => {
-            dispatch(setUserProfile(response.data));
-        });
-    }
+export const getProfile = (userId) => (dispatch) => {
+    profileAPI.getProfile(userId).then((response) => {
+        dispatch(setUserProfile(response.data));
+    });
 }
 
 export const getStatus = (userId) => (dispatch) => {
