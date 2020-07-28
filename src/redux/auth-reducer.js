@@ -28,17 +28,15 @@ const authReducer = (state = initialState, action) => {
 export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_AUTH_USER_DATA, payload: {userId, email, login, isAuth}})
 export const setIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING_LOGIN, isFetching})
 
-export const getLogin = () => {
-    return (dispatch) => {
-        dispatch(setIsFetching(true));
-        authAPI.getLogin().then((data) => {
-            dispatch(setIsFetching(false));
-            if (data.resultCode === 0) {
-                let {id, email, login} = data.data;
-                dispatch(setAuthUserData(id, email, login, true));
-            }
-        });
-    }
+export const getLogin = () => (dispatch) => {
+    dispatch(setIsFetching(true));
+    return authAPI.getLogin().then((data) => {
+        dispatch(setIsFetching(false));
+        if (data.resultCode === 0) {
+            let {id, email, login} = data.data;
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+    });
 }
 
 export const Login = (email, password, rememberMe) => (dispatch) => {
