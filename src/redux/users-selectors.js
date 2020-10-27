@@ -40,8 +40,8 @@ export const getPageSizeSelector = createSelector(getPageSize, (pageSize) => {
     return pageSize;
 })
 
-export const getTotalCountSelector = createSelector(getTotalCount, (totalCount) => {
-    return totalCount;
+export const getTotalItemsCountSelector = createSelector(getTotalCount, (totalItemsCount) => {
+    return totalItemsCount;
 })
 
 export const getCurrentPageSelector = createSelector(getCurrentPage, (currentPage) => {

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const ProfileStatusWithHooks = (props) => {
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
-    
+
     useEffect(() => {
         setStatus(props.status);
     }, [props.status]);
@@ -13,7 +13,7 @@ const ProfileStatusWithHooks = (props) => {
     const activateEditMode = () => {
         setEditMode(true);
     };
-    
+
     const deactivateEditMode = () => {
         setEditMode(false);
         if (status !== props.status) {
@@ -30,6 +30,11 @@ const ProfileStatusWithHooks = (props) => {
             {editMode ? (
                 <div>
                     <input
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                deactivateEditMode();
+                            }
+                        }}
                         onChange={onStatusChange}
                         autoFocus={true}
                         onBlur={deactivateEditMode}

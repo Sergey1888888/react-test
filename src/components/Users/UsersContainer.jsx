@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { follow, unfollow, setCurrentPage, setMinMaxPages, setIsFollowingProgress, getUsers } from '../../redux/users-reducer';
+import { follow, unfollow, setCurrentPage, setIsFollowingProgress, getUsers } from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getUsersSelector, getPageSizeSelector, getTotalCountSelector, getCurrentPageSelector, getMinPageSelector, getMaxPageSelector, getIsFetchingSelector, getFollowingInProgressSelector } from '../../redux/users-selectors';
+import { getUsersSelector, getPageSizeSelector, getTotalItemsCountSelector, getCurrentPageSelector, getMinPageSelector, getMaxPageSelector, getIsFetchingSelector, getFollowingInProgressSelector } from '../../redux/users-selectors';
 
 class UsersContainer extends React.Component {
     componentDidMount() {
@@ -19,10 +19,8 @@ class UsersContainer extends React.Component {
     render() {
         return <>
                 { this.props.isFetching ? <Preloader /> : null }
-                <Users totalCount={this.props.totalCount}
+                <Users totalItemsCount={this.props.totalItemsCount}
                         pageSize={this.props.pageSize}
-                        minPage={this.props.minPage}
-                        maxPage={this.props.maxPage}
                         currentPage={this.props.currentPage}
                         users={this.props.users}
                         onPageChanged={this.onPageChanged}
@@ -37,7 +35,7 @@ let mapStateToProps = (state) => {
     return {
         users: getUsersSelector(state),
         pageSize: getPageSizeSelector(state),
-        totalCount: getTotalCountSelector(state),
+        totalItemsCount: getTotalItemsCountSelector(state),
         currentPage: getCurrentPageSelector(state),
         minPage: getMinPageSelector(state),
         maxPage: getMaxPageSelector(state),
@@ -72,4 +70,4 @@ let mapStateToProps = (state) => {
 //     }
 // }
 
-export default compose(connect(mapStateToProps, {follow, unfollow, setCurrentPage, setMinMaxPages, setIsFollowingProgress, getUsers}))(UsersContainer);
+export default compose(connect(mapStateToProps, {follow, unfollow, setCurrentPage, setIsFollowingProgress, getUsers}))(UsersContainer);

@@ -1,0 +1,20 @@
+.activePage {
+    font-weight: bold;
+    font-size: 46px;
+    cursor: pointer;
+    margin-left: 28px;
+}
+
+.pages {
+    font-size: 36px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.flex_pages {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 62px;
+}

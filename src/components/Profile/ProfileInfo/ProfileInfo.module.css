@@ -6,3 +6,12 @@
     width: 100px;
     height: 20px;
 }
+
+.description {
+    max-width: 400px;
+    overflow-x: auto;
+}
+
+.mainPhoto {
+    position: relative;
+}
